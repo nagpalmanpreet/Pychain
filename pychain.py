@@ -51,6 +51,12 @@ import hashlib
 # `amount` attributes
 # YOUR CODE HERE
 
+@dataclass
+class Record:
+    sender: str
+    receiver: str
+    amount: float
+
 
 ################################################################################
 # Step 2:
@@ -68,8 +74,7 @@ class Block:
 
     # @TODO
     # Rename the `data` attribute to `record`, and set the data type to `Record`
-    data: Any
-
+    record: Record
     creator_id: int
     prev_hash: str = "0"
     timestamp: str = datetime.datetime.utcnow().strftime("%H:%M:%S")
@@ -144,7 +149,7 @@ def setup():
     print("Initializing Chain")
     return PyChain([Block("Genesis", 0)])
 
-
+st.image('./Images/application-image.png')
 st.markdown("# PyChain")
 st.markdown("## Store a Transaction Record in the PyChain")
 
@@ -166,19 +171,19 @@ pychain = setup()
 
 # @TODO:
 # Delete the `input_data` variable from the Streamlit interface.
-input_data = st.text_input("Block Data")
+#input_data = st.text_input("Block Data")
 
 # @TODO:
 # Add an input area where you can get a value for `sender` from the user.
-# YOUR CODE HERE
+input_sender = st.text_input("Sender")
 
 # @TODO:
 # Add an input area where you can get a value for `receiver` from the user.
-# YOUR CODE HERE
+input_receiver = st.text_input("Receiver")
 
 # @TODO:
 # Add an input area where you can get a value for `amount` from the user.
-# YOUR CODE HERE
+input_amount = st.text_input("Amount")
 
 if st.button("Add Block"):
     prev_block = pychain.chain[-1]
@@ -188,8 +193,14 @@ if st.button("Add Block"):
     # Update `new_block` so that `Block` consists of an attribute named `record`
     # which is set equal to a `Record` that contains the `sender`, `receiver`,
     # and `amount` values
+    new_record = Record(
+        sender=input_sender,
+        receiver=input_receiver,
+        amount=input_amount
+    )
+
     new_block = Block(
-        data=input_data,
+        record=new_record,
         creator_id=42,
         prev_hash=prev_block_hash
     )
@@ -199,6 +210,7 @@ if st.button("Add Block"):
 
 ################################################################################
 # Streamlit Code (continues)
+
 
 st.markdown("## The PyChain Ledger")
 
@@ -216,7 +228,11 @@ selected_block = st.sidebar.selectbox(
 st.sidebar.write(selected_block)
 
 if st.button("Validate Chain"):
-    st.write(pychain.is_valid())
+    is_valid = pychain.is_valid()
+    if is_valid:
+        st.write("Blockchain is valid")
+    else:
+        st.write("Blockchain is invalid")
 
 ################################################################################
 # Step 4:
