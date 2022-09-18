@@ -98,6 +98,16 @@ You’ll upload the Python file for this assignment to your GitHub repository.
 
 * Submit the link to your GitHub project to Bootcamp Spot.
 
+* Block Chain Ledger
+![alt=""](Images/Ledger.png)
+
+* Block Chain Validation
+![alt=""](Images/Validation.png)
+
+* Streamlit Screen Recording
+![alt=""](Images/streamlit_recording.webm)
+Screen Recording of the streamlit app is uploaded under Images folder
+
 ---
 
 © 2021 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
