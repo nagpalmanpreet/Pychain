@@ -105,8 +105,7 @@ You’ll upload the Python file for this assignment to your GitHub repository.
 ![alt=""](Images/Validation.png)
 
 * Streamlit Screen Recording
-![alt=""](Images/streamlit_recording.webm)
-Screen Recording of the streamlit app is uploaded under Images folder
+![alt=""](Images/streamlit_recording.gif)
 
 ---
 
